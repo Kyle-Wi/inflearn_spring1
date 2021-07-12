@@ -16,21 +16,25 @@ public class AppConfig {
     
     @Bean
     public MemberService memberService(){
+        System.out.println("call AppConfig.memberService()");
         return new MemberServiceImpl(MemberRepository()); // memberService가 발생하면 implement가 만들어지면서 그때 MemoryMemberRepository를 주입한 뒤 넘겨줌
     }
 
     @Bean
     public MemoryMemberRepository MemberRepository() {
+        System.out.println("call AppConfig.MemberRepository()");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService(){
+        System.out.println("call AppConfig.orderService()");
         return new OrderServiceImpl(MemberRepository(), discountPolicy());
     }
 
     @Bean
     public DiscountPolicy discountPolicy(){
+        System.out.println("call AppConfig.discountPolicy()");
         return new RateDiscountPolicy();
     }
     

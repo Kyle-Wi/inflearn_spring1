@@ -6,18 +6,20 @@ import org.springframework.stereotype.Component;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 
 @Component
+@RequiredArgsConstructor // final붙은 필드의 생성자를 만들어줌
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository; // interface에만 의존
     private final DiscountPolicy discountPolicy; // interface에만 의존
     
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+    // @Autowired
+    // public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    //     this.memberRepository = memberRepository;
+    //     this.discountPolicy = discountPolicy;
+    // }
     
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {

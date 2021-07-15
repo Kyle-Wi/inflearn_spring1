@@ -1,11 +1,17 @@
 package hello.core.discount;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 
 @Component
+// @Qualifier("mainDiscountPolicy") // 빈 이름을 변경하는 것은 아니다.
+@Primary
+@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy {
         
     

@@ -2,6 +2,7 @@ package hello.core;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
@@ -33,6 +34,7 @@ public class AppConfig {
     }
 
     @Bean
+    @Primary
     public DiscountPolicy discountPolicy(){
         System.out.println("call AppConfig.discountPolicy()");
         return new RateDiscountPolicy();
